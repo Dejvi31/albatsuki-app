@@ -1,4 +1,4 @@
-import HomeGrid from "@/components/HomeGrid";
+import HomeGrid from "@/components/Home/HomeGrid";
 import LoginButton from "@/components/LoginButton";
 import Logo from "@/components/Logo";
 

@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
-import AnimeItem from "@/components/Anime/AnimeItem";
+import useSearchAndFilter from "@/hooks/useSearchAndFilter";
+import { dublim } from "@/data/content"; // Anime content data
 import SearchBar from "@/components/Anime/SearchBar";
 import FilterButtons from "@/components/Anime/FilterButtons";
-import useAnimeSearch from "@/hooks/useAnimeSearch";
+import AnimeItem from "@/components/Anime/AnimeItem";
 
 const Dublim = () => {
   const {
@@ -16,7 +16,8 @@ const Dublim = () => {
     suggestions,
     handleSubmit,
     handleSuggestionClick,
-  } = useAnimeSearch();
+  } = useSearchAndFilter(dublim); // Pass the anime data to the hook
+
   return (
     <div className="p-4">
       {/* Search Bar */}
@@ -26,6 +27,7 @@ const Dublim = () => {
         handleSubmit={handleSubmit}
         suggestions={suggestions}
         handleSuggestionClick={handleSuggestionClick}
+        placeholder="Kerko Anime Dublim Shqip"
       />
 
       {/* Filter Buttons */}

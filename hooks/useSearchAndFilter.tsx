@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { content } from "@/data/content"; // Adjust the path according to your project structure
 
-const useAnimeSearch = () => {
+const useSearchAndFilter = (initialContent: any[]) => {
   const [filter, setFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
 
   // Filter the content based on user selection (All, Movies, Serials)
   const filteredContent =
-    filter === "All" ? content : content.filter((item) => item.type === filter);
+    filter === "All"
+      ? initialContent
+      : initialContent.filter((item) => item.type === filter);
 
   // Filter content further based on the submitted search query
   const searchedContent = filteredContent.filter((item) =>
@@ -16,7 +17,7 @@ const useAnimeSearch = () => {
   );
 
   // Suggestions based on the search query before submitting
-  const suggestions = content.filter((item) =>
+  const suggestions = initialContent.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -46,4 +47,4 @@ const useAnimeSearch = () => {
   };
 };
 
-export default useAnimeSearch;
+export default useSearchAndFilter;

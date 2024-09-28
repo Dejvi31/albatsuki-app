@@ -6,6 +6,7 @@ interface SearchBarProps {
   handleSubmit: (e: React.FormEvent) => void;
   suggestions: { id: number; title: string }[];
   handleSuggestionClick: (title: string) => void;
+  placeholder: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -14,12 +15,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
   handleSubmit,
   suggestions,
   handleSuggestionClick,
+  placeholder,
 }) => {
   return (
     <form onSubmit={handleSubmit} className="relative mb-6 flex justify-center">
       <input
         type="text"
-        placeholder="Search for anime..."
+        placeholder={placeholder}
         className="w-full md:w-1/2 p-2 border rounded-lg shadow-sm"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}

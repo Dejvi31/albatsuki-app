@@ -5,6 +5,9 @@ import SearchBar from "@/components/Anime/SearchBar";
 import useCarousel from "@/hooks/useCarousel"; // Import the custom carousel hook
 import CarouselAmv from "@/components/Amv/CarouselAmv";
 import GridAmv from "@/components/Amv/GridAmv";
+import { usePathname } from "next/navigation";
+import { useBreadCrumbs } from "@/hooks/useBreadCrumbs";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const Amv = () => {
   const {
@@ -27,40 +30,46 @@ const Amv = () => {
     isNextDisabled,
   } = useCarousel(searchedContent, itemsPerPage); // Call the custom hook
 
+  const currentPath = usePathname(); // Get the current path
+  const breadCrumbs = useBreadCrumbs(currentPath); // Generate breadcrumbs
+
   return (
-    <div className="p-4">
-      {/* Search Bar */}
-      <SearchBar
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        handleSubmit={handleSubmit}
-        suggestions={suggestions}
-        handleSuggestionClick={handleSuggestionClick}
-        placeholder="Kerko AMV"
-      />
+    <>
+      <Breadcrumbs breadCrumbs={breadCrumbs} />
+      <div className="p-4">
+        {/* Search Bar */}
+        <SearchBar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          handleSubmit={handleSubmit}
+          suggestions={suggestions}
+          handleSuggestionClick={handleSuggestionClick}
+          placeholder="Kerko AMV"
+        />
 
-      {/* Display the submitted search query */}
-      {submittedQuery && (
-        <h2 className="text-white text-center mb-2">
-          Results for: <strong>{submittedQuery}</strong>
-        </h2>
-      )}
-
-      {/* Carousel for AMVs */}
-      {!submittedQuery &&
-        carouselItems.length > 0 && ( // Check for submittedQuery
-          <CarouselAmv
-            carouselItems={carouselItems}
-            handleNext={handleNext}
-            handlePrevious={handlePrevious}
-            isNextDisabled={isNextDisabled}
-            isPreviousDisabled={isPreviousDisabled}
-          />
+        {/* Display the submitted search query */}
+        {submittedQuery && (
+          <h2 className="text-white text-center mb-2">
+            Results for: <strong>{submittedQuery}</strong>
+          </h2>
         )}
 
-      {/* Grid displaying the filtered content */}
-      <GridAmv searchedContent={searchedContent} />
-    </div>
+        {/* Carousel for AMVs */}
+        {!submittedQuery &&
+          carouselItems.length > 0 && ( // Check for submittedQuery
+            <CarouselAmv
+              carouselItems={carouselItems}
+              handleNext={handleNext}
+              handlePrevious={handlePrevious}
+              isNextDisabled={isNextDisabled}
+              isPreviousDisabled={isPreviousDisabled}
+            />
+          )}
+
+        {/* Grid displaying the filtered content */}
+        <GridAmv searchedContent={searchedContent} />
+      </div>
+    </>
   );
 };
 

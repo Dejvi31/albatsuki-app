@@ -1,5 +1,9 @@
+"use client";
 import { dublim } from "@/data/content";
 import AnimeDetails from "@/components/Anime/AnimeDetails";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { usePathname } from "next/navigation";
+import { useBreadCrumbs } from "@/hooks/useBreadCrumbs";
 
 interface Params {
   params: {
@@ -17,8 +21,14 @@ const DublimDetails = ({ params }: Params) => {
       <p className="text-white text-center">Nuk u gjend ky film ose serial.</p>
     );
   }
-
-  return <AnimeDetails animeData={animeData} />;
+  const currentPath = usePathname(); // Get the current path
+  const breadCrumbs = useBreadCrumbs(currentPath); // Generate breadcrumbs
+  return (
+    <>
+      <Breadcrumbs breadCrumbs={breadCrumbs} />
+      <AnimeDetails animeData={animeData} />;
+    </>
+  );
 };
 
 export default DublimDetails;

@@ -1,4 +1,5 @@
 import { dublim } from "@/data/content";
+import AnimeDetails from "@/components/Anime/AnimeDetails";
 
 interface Params {
   params: {
@@ -6,7 +7,7 @@ interface Params {
   };
 }
 
-const AnimeDetails = ({ params }: Params) => {
+const DublimDetails = ({ params }: Params) => {
   const { animename } = params;
 
   const animeData = dublim.find((item) => item.urlTitle === animename);
@@ -17,12 +18,7 @@ const AnimeDetails = ({ params }: Params) => {
     );
   }
 
-  return (
-    <div className="p-4 text-white">
-      <h1 className="text-2xl font-bold mb-4">{animeData.title}</h1>
-      <img src={animeData.imgSrc} alt={animeData.title} className="mb-4" />
-    </div>
-  );
+  return <AnimeDetails animeData={animeData} />;
 };
 
-export default AnimeDetails;
+export default DublimDetails;

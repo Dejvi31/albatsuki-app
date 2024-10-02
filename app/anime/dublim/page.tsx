@@ -1,6 +1,6 @@
 "use client";
 import useSearchAndFilter from "@/hooks/useSearchAndFilter";
-import { dublim } from "@/data/content"; // Anime content data
+import { dublim } from "@/data/content";
 import SearchBar from "@/components/Anime/SearchBar";
 import FilterButtons from "@/components/Anime/FilterButtons";
 import AnimeItem from "@/components/Anime/AnimeItem";
@@ -16,11 +16,10 @@ const Dublim = () => {
     suggestions,
     handleSubmit,
     handleSuggestionClick,
-  } = useSearchAndFilter(dublim); // Pass the anime data to the hook
+  } = useSearchAndFilter(dublim);
 
   return (
     <div className="p-4">
-      {/* Search Bar */}
       <SearchBar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
@@ -30,21 +29,24 @@ const Dublim = () => {
         placeholder="Kerko Anime Dublim Shqip"
       />
 
-      {/* Filter Buttons */}
       <FilterButtons filter={filter} setFilter={setFilter} />
 
-      {/* Display the submitted search query */}
       {submittedQuery && (
         <h2 className="text-white text-center mb-2">
           Rezultate per: <strong>{submittedQuery}</strong>
         </h2>
       )}
 
-      {/* Grid displaying the filtered content */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {searchedContent.length > 0 ? (
           searchedContent.map((item) => (
-            <AnimeItem key={item.id} title={item.title} imgSrc={item.imgSrc} />
+            <AnimeItem
+              key={item.id}
+              title={item.title}
+              imgSrc={item.imgSrc}
+              urlTitle={item.urlTitle}
+              basePath="/anime/dublim"
+            />
           ))
         ) : (
           <p className="col-span-2 md:col-span-4 text-center text-white">

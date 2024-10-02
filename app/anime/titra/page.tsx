@@ -45,7 +45,13 @@ const Titra = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {searchedContent.length > 0 ? (
           searchedContent.map((item) => (
-            <AnimeItem key={item.id} title={item.title} imgSrc={item.imgSrc} />
+            <AnimeItem
+              key={item.id}
+              title={item.title}
+              imgSrc={item.imgSrc}
+              urlTitle={item.urlTitle}
+              basePath="/anime/titra"
+            />
           ))
         ) : (
           <p className="col-span-2 md:col-span-4 text-center text-white">

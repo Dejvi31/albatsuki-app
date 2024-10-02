@@ -59,3 +59,42 @@ export const amvs = [
     music: "Your Chosen Music Title",
   },
 ];
+
+export const quizQuestions = [
+  {
+    question: "Cili është krijuesi i 'One Piece'?",
+    options: [
+      "A: Masashi Kishimoto",
+      "B: Eiichiro Oda",
+      "C: Akira Toriyama",
+      "D: Hajime Isayama",
+    ],
+    correctAnswer: "B",
+  },
+  {
+    question: "Kur u transmetua për herë të parë 'Naruto'?",
+    options: ["A: 1999", "B: 2002", "C: 2005", "D: 2010"],
+    correctAnswer: "B",
+  },
+  {
+    question: "Sa bishta ka Kurama në 'Naruto'?",
+    options: ["A: 9", "B: 7", "C: 5", "D: 10"],
+    correctAnswer: "A",
+  },
+  {
+    question:
+      "Kush është kapiteni i ekuipazhit të 'Straw Hats' në 'One Piece'? ",
+    options: ["A: Zoro", "B: Sanji", "C: Luffy", "D: Nami"],
+    correctAnswer: "C",
+  },
+  {
+    question: "Kush është autori i 'Attack on Titan'?",
+    options: [
+      "A: Eiichiro Oda",
+      "B: Masashi Kishimoto",
+      "C: Hajime Isayama",
+      "D: Yoshihiro Togashi",
+    ],
+    correctAnswer: "C",
+  },
+];
